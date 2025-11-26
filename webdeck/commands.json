@@ -1005,5 +1005,52 @@
       "command": "/spotify unfollow_artist",
       "args": []
     }
+  },
+  "Media Player": {
+    "Play YouTube Video": {
+      "command": "/mediaplayer play ",
+      "args": [
+        {
+          "TYPE": "input text",
+          "placeholder": "YouTube URL"
+        }
+      ],
+      "style": {
+        "image": "play.png",
+        "image_size": "70%"
+      }
+    },
+    "Play Rick Roll (Test)": {
+      "command": "/mediaplayer play https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "args": [],
+      "style": {
+        "image": "play.png",
+        "image_size": "70%"
+      }
+    },
+    "Play Nature Video (Test)": {
+      "command": "/mediaplayer play https://www.youtube.com/watch?v=j800SVei8DA",
+      "args": [],
+      "style": {
+        "image": "play.png",
+        "image_size": "70%"
+      }
+    },
+    "Stop Media Player": {
+      "command": "/mediaplayer stop",
+      "args": [],
+      "style": {
+        "image": "stop.png",
+        "image_size": "70%"
+      }
+    },
+    "Pause Media Player": {
+      "command": "/mediaplayer pause",
+      "args": [],
+      "style": {
+        "image": "pause.png",
+        "image_size": "70%"
+      }
+    }
   }
 }

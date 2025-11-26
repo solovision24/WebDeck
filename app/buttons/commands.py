@@ -28,6 +28,7 @@ from . import spotify
 from . import obs
 from . import color_picker
 from . import system
+from . import mediaplayer
 
 
 
@@ -260,6 +261,9 @@ def handle_command(message=None):
             
         elif message.startswith("/obs"):
             return obs.handle_command(message)
+            
+        elif message.startswith("/mediaplayer"):
+            return mediaplayer.handle_mediaplayer_command(message)
         
         # /colorpicker lang:en type:text|name;text-original|name-original;hex;rgb;hsl copy:text;hex;rgb;hsl copy_type:raw|list displaytype:raw|list remove_hex_sharp:false
         elif message.startswith("/colorpicker"):

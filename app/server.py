@@ -524,6 +524,43 @@ def send_data_route():
     return jsonify(result)
 
 
+@app.route("/youtube-search", methods=["POST"])
+def youtube_search():
+    from app.buttons.youtube_search import search_youtube_videos, get_video_info, validate_youtube_url
+    
+    try:
+        data = request.get_json()
+        query = data.get('query', '')
+        
+        if validate_youtube_url(query):
+            # If it's a URL, get video info
+            video_id = extract_video_id(query)
+            video_info = get_video_info(video_id)
+            return jsonify({
+                "success": True,
+                "results": [video_info] if video_info else [],
+                "type": "single"
+            })
+        else:
+            # Search for videos
+            results = search_youtube_videos(query)
+            return jsonify({
+                "success": True,
+                "results": results,
+                "type": "search"
+            })
+            
+    except Exception as e:
+        log.exception(e, "Error in YouTube search")
+        return jsonify({"success": False, "message": str(e)})
+
+
+def extract_video_id(url):
+    """Extract YouTube video ID from URL"""
+    from app.buttons.youtube_search import extract_video_id as extract
+    return extract(url)
+
+
 if (
     config["settings"]["automatic_firewall_bypass"] == True
     and check_firewall_permission() == False
